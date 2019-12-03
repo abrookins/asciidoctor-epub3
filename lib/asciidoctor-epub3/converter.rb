@@ -273,11 +273,13 @@ document.addEventListener('DOMContentLoaded', function(event, reader) {
       title = node.title
       title_sanitized = xml_sanitize title
       title_attr = %( title="#{node.caption}: #{title_sanitized}")
-      title_el = %(<h2>#{title}</h2>
-)
+      title_el = %(<h2>#{title}</h2>)
     else
-      title_attr = %( title="#{node.caption}")
-      title_el = ''
+      # Kindle doesn't render fonts -- show caption as title instead
+      title = node.caption
+      title_sanitized = xml_sanitize title
+      title_attr = %( title="#{node.caption}: #{title_sanitized}")
+      title_el = %(<h2>#{title}</h2>)
     end
 
     type = node.attr 'name'

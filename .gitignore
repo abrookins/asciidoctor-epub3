@@ -4,3 +4,4 @@
 /Gemfile.lock
 /README.html
 /pkg/
+*.gem
